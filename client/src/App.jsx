@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Join from './components/Join';
 import Game from './components/Game';
-import { PAGE_NAME } from './utils/conf';
 import './App.css';
 
 function App() {

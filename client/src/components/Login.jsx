@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { PAGE_NAME } from '../utils/conf';
+import React from "react";
 import { Link } from 'react-router-dom'
 
 const Login = ({setPage}) => {
