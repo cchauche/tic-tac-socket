@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Join from './components/Join';
 import Game from './components/Game';
+import socket from './utils/socket';
 import './App.css';
+
 
 function App() {
   return (
