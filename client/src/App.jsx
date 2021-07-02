@@ -2,16 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Login from './components/Login';
 import Join from './components/Join';
+import Game from './components/Game';
 import { PAGE_NAME } from './utils/conf';
 import './App.css';
 
 function App() {
-  const [page, setPage] = useState(PAGE_NAME.login);
-
-  let pageToRender = null;
-  if (page === PAGE_NAME.login) pageToRender = <Login setPage={setPage} />;
-  else if (page === PAGE_NAME.join) pageToRender = <Join />;
-
   return (
     <div className="App">
       <header>
@@ -23,6 +18,7 @@ function App() {
             <Route path="/join">
               <Join />
             </Route>
+            <Route path="/:gameId" children={<Game />} />
             <Route path="/">
               <Login />
             </Route>
