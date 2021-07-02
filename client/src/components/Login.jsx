@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { PAGE_NAME } from '../utils/conf';
+import { Link } from 'react-router-dom'
 
 const Login = ({setPage}) => {
 
@@ -8,7 +9,7 @@ const Login = ({setPage}) => {
       <h2>Username</h2>
       <input type="text" aria-label="Username"></input>
       <div>
-        <button onClick={()=>setPage(PAGE_NAME.join)}>Join Game</button>
+        <Link to="/join">Join Game</Link>
         <button>Create Game</button>
       </div>
     </>
