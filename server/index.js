@@ -1,3 +1,4 @@
+const shortid = require('shortid');
 // Import express and initialize express app
 const express = require('express');
 const app = express();
@@ -15,14 +16,24 @@ const io = new Server(httpServer, {
   },
 });
 
-app.get('/', (req, res) => {
-  res.status(200).send('Hello World')
-})
+const db = {};
 
 io.on('connection', (socket) => {
-  console.log('a user connected!')
-})
+  console.log('a user connected!');
+  socket.on('createUser', (data) => {
+    console.log('Create User Data: ', data);
+    // Generate unique room number id
+    let roomId = shortid.generate();
+    // add socket to room
+    socket.join(roomId);
+    // Save room id and way to get to that room
+    db[roomId] ? db[roomId].push(socket.id) : (db[roomId] = [socket.id]);
+    // emit something
+    console.log('Socket Rooms 2: ', socket.rooms);
+    io.to(roomId).emit('playerJoinedRoom', { roomId, sockets: db[roomId] });
+  });
+});
 
 httpServer.listen(3001, () => {
-  console.log('Listening on http://localhost:3001')
-})
+  console.log('Listening on http://localhost:3001');
+});
